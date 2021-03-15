@@ -2,8 +2,7 @@
 command=$1
 export db_password=$2  #'password'
 export db_username=$3  #'yerin'
-container_name=$4
-
+check_all=$4
 # CHECK WHETHER A CONTAINER CREATED OR NOT
 function is_created_container(){
   check_container=$(docker container ls -a -f name=jrvs-psql | grep jrvs-psql)
@@ -28,7 +27,7 @@ function error_mes_container() {
 }
 
 function error_mes_db(){
-  if [ "$2" == "" ] || [ "$3" == "" ]
+  if [ "$db_password" == "" ] || [ "$db_username" == "" ]
   then
     echo "ERROR: password or username is missing"
   fi
@@ -38,7 +37,7 @@ function create_container(){
   sudo systemctl status docker || systemctl start docker
   docker pull postgres
   docker volume create pgdata
-  docker run --name jrvs-psql -e POSTGRES_PASSWORD="$2" -e POSTGRES_USER="$3" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
+  docker run --name jrvs-psql -e POSTGRES_PASSWORD=$db_password -e POSTGRES_USER=db_username -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
 }
 
 function get_create() {
@@ -62,10 +61,10 @@ function get_stop() {
 }
 
 function check_status() {
-  if [ "$1" == "check" ]
-  then if [ "$2" == "" ]
+  if [ "$command" == "check" ]
+  then if [ "$check_all" == "" ]
     then docker container ls -a
-    else docker container ls -a -f name="$4"
+    else docker container ls -a -f name=jrvs-psql
     fi
   fi
 }
@@ -75,7 +74,7 @@ function get_remove() {
   echo "DOCKER CONTAINER IS REMOVED"
 }
 
-case $1 in
+case $command in
   "create")
     get_create
     exit $?
@@ -102,7 +101,7 @@ esac
 
 list=('create' 'start' 'stop' 'remove' 'check')
 
-if [ "$1" != "$(compgen -W "${list[*]}" "$1" | head -1)" ]
+if [ "$command" != "$(compgen -W "${list[*]}" "$command" | head -1)" ]
   then echo "ERROR: INVALID ACTION"
   exit 1
 fi
