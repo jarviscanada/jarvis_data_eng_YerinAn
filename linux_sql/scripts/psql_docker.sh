@@ -74,32 +74,33 @@ function get_remove() {
   echo "DOCKER CONTAINER IS REMOVED"
 }
 
-case $command in
-  "create")
+list=('create' 'start' 'stop' 'remove' 'check')
+
+case $1 in
+  "${list[0]}")
+
     get_create
     exit $?
     ;;
-  "start")
+  "${list[1]}")
     get_start
     exit $?
     ;;
-  "stop")
+  "${list[2]}")
     get_stop
     exit $?
     ;;
-  "check")
+  "${list[4]}")
     check_status
     exit $?
     ;;
-  "stop")
+  "${list[3]}")
     get_remove
     exit $?
     ;;
   *)
   ;;
 esac
-
-list=('create' 'start' 'stop' 'remove' 'check')
 
 if [ "$command" != "$(compgen -W "${list[*]}" "$command" | head -1)" ]
   then echo "ERROR: INVALID ACTION"
