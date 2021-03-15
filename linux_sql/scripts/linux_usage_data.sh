@@ -26,3 +26,6 @@ print_ hostname "$hostname"
 print_ cpu_number "$cpu_number"
 print_ totalmemory "$total_mem"
 print_ timestamp "$timestamp"
+
+# execute - bash host_info.sh postgres 5432:5432
+
