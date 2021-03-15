@@ -9,7 +9,7 @@ Discuss the design of the project. What does this project/product do? Who are th
 Use markdown code block for your quick start commands
 - Start a psql instance using psql_docker_01.sh create/start/stop/remove/check
 - Create tables using psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
-- Insert hardware specs data into the db using host_info.sh
+- Insert hardware specs data into the db using host_info.sh psql_host port
 - Insert hardware usage data into the db using host_usage.sh
 - Crontab setup
 
