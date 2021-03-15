@@ -1,14 +1,17 @@
---connect to the psql instance
+--# connect to the psql instance
 --psql -h localhost -U postgres -W
---list all database
+--# list all database
 --postgres=# \l
 --# create a database
 --postgres=# CREATE DATABASE host_agent;
 --# connect to the new database;
 --postgres=# \c host_agent;
 
+--docker exec -u 0 -it containerName bash
+--sudo service postgresql stop
+
 --01. (optional) switch to `host_agent`
---\c host_agent;
+\c host_agent;
 --02. create `host_info` table if not exist create `host_info` table if not exist
 CREATE TABLE IF NOT EXISTS host_info (
   id SERIAL NOT NULL,
@@ -41,5 +44,8 @@ CREATE TABLE IF NOT EXISTS host_usage (
   	  REFERENCES host_info(id)
 );
 
-INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
-VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
+--INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
+--VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
+
+--# execute .spl
+--psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
