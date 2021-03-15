@@ -29,7 +29,7 @@ insert_stmt="INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_
 VALUES ($hostname, $cpu_number, $cpu_architecture, $cpu_model, $cpu_mhz, $l2_cache, $total_mem, $timestamp);"
 export PGPASSWORD=$psql_password
 
-psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql -c "$insert_stmt"
+psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql -c "SELECT * FROM host_info"
 #echo "dddd"
 #psql -h localhost -U postgres -W
 
@@ -45,4 +45,4 @@ psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl
 #put appropriate exit number
 exit 0
 
-#bash host_info.sh localhost 5432 host_agent postgres password
+#bash host_info.sh localhost 5432 host_agent postgres passwordq
