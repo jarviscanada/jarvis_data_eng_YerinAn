@@ -7,9 +7,9 @@
 --# connect to the new database;
 --postgres=# \c host_agent;
 
---docker exec -u 0 -it containerName bash
---sudo service postgresql stop
-
+--################################################################################
+--# password : password
+--################################################################################
 --01. (optional) switch to `host_agent`
 \c host_agent;
 --02. create `host_info` table if not exist create `host_info` table if not exist
