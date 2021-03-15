@@ -10,9 +10,9 @@ function print_() {
     echo -e "$1: $2\n"
 }
 
-print_ hostname "$hostname"
-print_ totalmemory "$total_mem"
-print_ timestamp "$timestamp"
+#print_ hostname "$hostname"
+#print_ totalmemory "$total_mem"
+#print_ timestamp "$timestamp"
 
 
 #list=( 'hostname' 'cpu_number' 'cpu_architecture' 'cpu_model' 'cpu_mhz' 'l2_cache' 'memory_info' 'total_mem' 'timestamp' )
