@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS host_info (
   cpu_architecture VARCHAR,
   cpu_model VARCHAR,
   cpu_mhz NUMERIC(10,3),
-  L2_cache INTEGER,
+  L2_cache VARCHAR,
   total_mem INTEGER,
   time_ timestamp without time zone NOT NULL DEFAULT (current_timestamp AT TIME ZONE 'UTC'),
   PRIMARY KEY (id),
@@ -37,13 +37,12 @@ CREATE TABLE IF NOT EXISTS host_usage (
   memory_free INTEGER,
   cpu_idle INTEGER,
   cpu_kernel INTEGER,
-  disk_io INTEGER,
-  disk_available INTEGER,
+  disk_io VARCHAR,
+  disk_available VARCHAR,
   CONSTRAINT fk_host_info
         FOREIGN KEY(host_id)
   	  REFERENCES host_info(id)
 );
-
 --INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 --VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
 
