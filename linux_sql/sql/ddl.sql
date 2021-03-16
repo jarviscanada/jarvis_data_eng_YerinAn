@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS host_info (
   cpu_architecture VARCHAR,
   cpu_model VARCHAR,
   cpu_mhz NUMERIC(10,3),
-  L2_cache INTEGER,
+  L2_cache VARCHAR,
   total_mem INTEGER,
   time_ timestamp without time zone NOT NULL DEFAULT (current_timestamp AT TIME ZONE 'UTC'),
   PRIMARY KEY (id),

@@ -3,8 +3,12 @@
 
 hostname=$(hostname -f)
 memory_info=$(cat /proc/meminfo)
-total_mem=$(echo "$memory_info"  | egrep "^MemTotal:" | awk '{print $2}' | xargs)
 timestamp=$(echo "$(date '+%Y-%m-%d %H:%M:%S' -u)" | awk '{print $1"\t"$2}' | xargs)
+memory_free=$(echo "$memory_info"  | egrep "^MemFree:" | awk '{print $2}' | xargs)
+cpu_idle=$(echo "$memory_info"  | egrep "^MemFree:" | awk '{print $2}' | xargs)
+cpu_kernel=$(echo "$memory_info"  | egrep "^MemFree:" | awk '{print $2}' | xargs)
+disk_io=$(echo "$memory_info"  | egrep "^MemFree:" | awk '{print $2}' | xargs)
+disk_available=$(echo "$memory_info"  | egrep "^MemFree:" | awk '{print $2}' | xargs)
 
 function print_() {
     echo -e "$1: $2\n"
