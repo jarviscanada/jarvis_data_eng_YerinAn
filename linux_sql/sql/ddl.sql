@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS host_usage (
   memory_free INTEGER,
   cpu_idle INTEGER,
   cpu_kernel INTEGER,
-  disk_io INTEGER,
-  disk_available INTEGER,
+  disk_io VARCHAR,
+  disk_available VARCHAR,
   CONSTRAINT fk_host_info
         FOREIGN KEY(host_id)
   	  REFERENCES host_info(id)

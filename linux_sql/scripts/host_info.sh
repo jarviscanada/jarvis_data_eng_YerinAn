@@ -8,10 +8,10 @@ psql_user=$4 #postgres
 psql_password=$5 #password
 
 ##validate arguments
-#if [ "$#" -ne 2 ]; then
-#    echo "Illegal number of parameters"
-#    exit 1
-#fi
+if [ "$#" -ne 5 ]; then
+    echo "Illegal number of parameters"
+    exit 1
+fi
 
 #parse hardware specification
 hostname=$(hostname -f)
@@ -30,19 +30,7 @@ VALUES ('$hostname', $cpu_number, '$cpu_architecture', '$cpu_model', $cpu_mhz, '
 
 export PGPASSWORD=$psql_password
 psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql -c "$insert_stmt"
-#echo "dddd"
-#psql -h localhost -U postgres -W
 
-#function print_() {
-#    echo -e "$1: $2\n"
-#}
-#print_ cpu_number "$cpu_number"
-#print_ cpu_architecture "$cpu_architecture"
-#print_ cpu_model "$cpu_model"
-#print_ cpu_mhz "$cpu_mhz"
-#print_ l2_cache "$l2_cache"
-
-#put appropriate exit number
 exit 0
 
 #bash host_info.sh localhost 5432 host_agent postgres password
