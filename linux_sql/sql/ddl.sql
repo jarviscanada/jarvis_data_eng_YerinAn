@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS host_usage (
         FOREIGN KEY(host_id)
   	  REFERENCES host_info(id)
 );
-
 --INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 --VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
 

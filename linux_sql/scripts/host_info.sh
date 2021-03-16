@@ -32,5 +32,4 @@ export PGPASSWORD=$psql_password
 psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql -c "$insert_stmt"
 
 exit 0
-
 #bash host_info.sh localhost 5432 host_agent postgres password
