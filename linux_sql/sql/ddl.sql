@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS host_usage (
 --INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 --VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
 --INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
---VALUES ('2021-03-16 16:52:58', 1, 4354777, 97, 0, 45/7, 23439);
+--VALUES ('2021-03-16 18:26:58', 2, 30000, 95, 0, 45/7, 23439);
 
 --# execute .spl
 --psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
