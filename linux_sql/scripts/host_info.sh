@@ -6,14 +6,11 @@ psql_port=$2 #5432
 db_name=$3 #host_agent
 psql_user=$4 #postgres
 psql_password=$5 #password
-command=$6
 
 export PGPASSWORD=$psql_password
 
-list=('set' 'run')
-
 ##validate arguments
-if [ "$#" -ne 6 ]; then
+if [ "$#" -ne 5 ]; then
     echo "Illegal number of parameters"
     exit 1
 fi
@@ -32,10 +29,11 @@ timestamp=$(echo "$(date '+%Y-%m-%d %H:%M:%S' -u)" | awk '{print $1"\t"$2}' | xa
 insert_stmt="INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_)
 VALUES ('$hostname', $cpu_number, '$cpu_architecture', '$cpu_model', $cpu_mhz, '$l2_cache', $total_mem, '$timestamp');"
 
-check_hostname="SELECT EXISTS (SELECT id FROM host_info WHERE hostname='$hostname')::int;"
+check_hostname="SELECT EXISTS (SELECT id FROM host_info WHERE hostname='$hostname');"
+check_table="SELECT EXISTS (SELECT FROM pg_tables WHERE tablename='host_info');"
 
-
-function connect_psql() {
+#SELECT EXISTS (SELECT id FROM host_info WHERE hostname='host90')
+function setup_psql() {
   psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql
 }
 
@@ -43,32 +41,22 @@ function run_psql() {
   psql -t -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -c "$1"
 }
 
-function is_exist() {
+function add_row() {
+  table=$(run_psql "$check_table")
+  if [ "$table" == "f" ]
+  then setup_psql
+  else echo "TABLE EXISTS"
+  fi
+
   get=$(run_psql "$check_hostname")
-  if [ "$get" == "      0" ]
+  if [ "$get" == "f" ]
     then run_psql "$insert_stmt"
     else
       echo "HOST EXISTS"
   fi
 }
 
-case $command in
-  "${list[0]}")
-    connect_psql
-    exit $?
-    ;;
-  "${list[1]}")
-    is_exist
-    exit $?
-    ;;
-  *)
-  ;;
-esac
-
-if [ "$command" != "$(compgen -W "${list[*]}" "$command" | head -1)" ]
-  then echo "ERROR: INVALID ACTION"
-  exit 1
-fi
+add_row
 
 exit 0
 #bash host_info.sh localhost 5432 host_agent postgres password run
