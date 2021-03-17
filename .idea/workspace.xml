@@ -41,7 +41,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9692366-7627-41db-a01e-6afff21698b8" name="Default Changelist" comment="" />
+    <list default="true" id="b9692366-7627-41db-a01e-6afff21698b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/host_usage.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/host_usage.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/queries" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
