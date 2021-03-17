@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS host_info (
   UNIQUE (hostname)
 );
 
---INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_)
---VALUES ('spry-framework-236416.internal', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2300.000, 256, 601324, CURRENT_TIMESTAMP);
+INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_)
+VALUES ('hostname04', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2300.000, 256, 751324, '2021-03-16 16:58:58');
 
 --03. create `host_usage` table if not exist
 CREATE TABLE IF NOT EXISTS host_usage (
@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS host_usage (
 );
 --INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 --VALUES (CURRENT_TIMESTAMP, 1, 256, 95, 0, 0, 31220);
+--INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
+--VALUES ('2021-03-16 18:26:58', 2, 30000, 95, 0, 45/7, 23439);
 
 --# execute .spl
 --psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
