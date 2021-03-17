@@ -76,9 +76,8 @@ function get_remove() {
 
 list=('create' 'start' 'stop' 'remove' 'check')
 
-case $1 in
+case $command in
   "${list[0]}")
-
     get_create
     exit $?
     ;;

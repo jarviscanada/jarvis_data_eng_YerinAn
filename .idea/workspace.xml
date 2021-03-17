@@ -42,7 +42,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9692366-7627-41db-a01e-6afff21698b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/host_usage.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/host_usage.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/host_info.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/host_info.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/psql_docker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/psql_docker.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/sql/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/sql/ddl.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +69,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
