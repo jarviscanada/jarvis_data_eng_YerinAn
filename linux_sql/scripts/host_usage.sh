@@ -42,11 +42,10 @@ function run_psql() {
 function add_row() {
   table01=$(run_psql "$check_table_info")
   table02=$(run_psql "$check_table_usage")
-  if [ "$table01" == "f" ] || [ "$table02" == "f" ]
+  if [ "$table01" == " f" ] || [ "$table02" == " f" ]
   then setup_psql
   else echo "TABLE EXISTS"
   fi
-
   run_psql "$insert_stmt"
 }
 
