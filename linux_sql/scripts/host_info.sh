@@ -49,7 +49,7 @@ function add_row() {
   fi
 
   get=$(run_psql "$check_hostname")
-  if [ "$get" == "f" ]
+  if [ "$get" == " f" ]
     then run_psql "$insert_stmt"
     else
       echo "HOST EXISTS"
@@ -83,6 +83,6 @@ exit 0
 
 #insert_stmt="INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, time_)
 #VALUES ('$hostname', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2300.000, 256, 751324, '2021-03-17 16:58:58');"
-#check_hostname="SELECT EXISTS (SELECT id FROM host_info WHERE hostname='$hostname')::int;"
+#check_hostname="SELECT EXISTS (SELECT id FROM host_info WHERE hostname='halo')::int;"
 #check_hostname="SELECT EXISTS (SELECT id FROM host_info WHERE hostname='$hostname')::int;"
 #SELECT EXISTS (SELECT 1 FROM host_info WHERE hostname='hostname07')::int
