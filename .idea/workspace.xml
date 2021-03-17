@@ -41,7 +41,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9692366-7627-41db-a01e-6afff21698b8" name="Default Changelist" comment="" />
+    <list default="true" id="b9692366-7627-41db-a01e-6afff21698b8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/host_info.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/host_info.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/psql_docker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/scripts/psql_docker.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/sql/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/linux_sql/sql/ddl.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/queries" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +69,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
