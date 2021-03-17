@@ -7,6 +7,8 @@ db_name=$3 #host_agent
 psql_user=$4 #postgres
 psql_password=$5 #password
 
+export PGPASSWORD=$psql_password
+
 if [ "$#" -ne 5 ]; then
     echo "Illegal number of parameters"
     exit 1
@@ -23,10 +25,29 @@ cpu_kernel=$(echo "$disk_io_info"  | egrep -A1 "+sy" | tail -n 1 | awk '{ print 
 disk_io=$(echo "$disk_io_info"  | egrep -A1 "+bi" | tail -n 1 | awk '{print $9"/"$10}' | xargs)
 disk_available=$(echo "$disk_info"  | egrep "^/dev/sda2" | awk '{print $4}' | xargs)
 
-get_host_id="SELECT id FROM host_info WHERE hostname='$hostname'"
-
 insert_stmt="INSERT INTO host_usage (time_, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 VALUES ('$timestamp', (SELECT id FROM host_info WHERE hostname='$hostname'), $memory_free, $cpu_idle, $cpu_kernel, '$disk_io', '$disk_available');"
 
-export PGPASSWORD=$psql_password
-psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql -c "$insert_stmt"
+check_table_info="SELECT EXISTS (SELECT FROM pg_tables WHERE tablename='host_info');"
+check_table_usage="SELECT EXISTS (SELECT FROM pg_tables WHERE tablename='host_usage');"
+
+function setup_psql() {
+  psql -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -f ../sql/ddl.sql
+}
+
+function run_psql() {
+  psql -t -h "$psql_host" -p "$psql_port" -U "$psql_user" -d "$db_name" -c "$1"
+}
+
+function add_row() {
+  table01=$(run_psql "$check_table_info")
+  table02=$(run_psql "$check_table_usage")
+  if [ "$table01" == "f" ] || [ "$table02" == "f" ]
+  then setup_psql
+  else echo "TABLE EXISTS"
+  fi
+
+  run_psql "$insert_stmt"
+}
+
+add_row
