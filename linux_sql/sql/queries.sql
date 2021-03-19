@@ -12,7 +12,7 @@ order by cpu_number asc, total_mem desc;
 
 --host_id, host_name, timestamp,avg_used_mem_percentage
 --Average used memory in percentage over 5 mins interval for each host. (used memory = total memory - free memory)
-CREATE FUNCTION round5(ts timestamp) RETURNS timestamp AS
+CREATE OR REPLACE FUNCTION round5(ts timestamp) RETURNS timestamp AS
 $$
 BEGIN
     RETURN date_trunc('hour', ts) + date_part('minute', ts):: int / 5 * interval '5 min';
