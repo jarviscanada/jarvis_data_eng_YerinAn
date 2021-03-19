@@ -59,4 +59,4 @@ WHERE n2.host_id=n1.host_id
 ORDER BY n2.host_id, n2.timestamp;
 
 --# execute .spl
---psql -h localhost -U postgres -d host_agent -f sql/queries.sql
+--PGPASSWORD=password psql -h localhost -U postgres -d host_agent -f sql/queries.sql
