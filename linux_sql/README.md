@@ -28,14 +28,20 @@ Shell script descirption and usage (use markdown code block for script usage)
 Describe the schema of each table using markdown table syntax (do not put any sql code)
 - `host_info`
 - `host_usage`
-
+- `ddl`
+- `queries`
 # Test
 How did you test your bash scripts and SQL queries? What was the result?
-
+- `host_info` : set up the information about host information and add a row.
+- `host_usage`: set up the information about host usage and add a row.
+- `ddl`       : create tables which are host_info, and host_usage.
+- `queries`   : able to run some queries
+                (Total memory info, Average memory usage, Detect host failure) 
+                and show the results.
 # Improvements
 Write at least three things you want to improve 
 e.g. 
-- handle hardware update 
-- blah
-- blah
+- create exception handler.
+- write explanations for all functions.
+- create a file to run all functions at once.
 ```
