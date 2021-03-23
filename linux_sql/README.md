@@ -15,6 +15,9 @@ Use markdown code block for your quick start commands
 
 # Implemenation
 Discuss how you implement the project.
+1. create functions that can reuse anytime.
+2. use a list that can easy to modify in the future.
+
 ## Architecture
 Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to `assets` directory.
 
