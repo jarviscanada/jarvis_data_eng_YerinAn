@@ -50,3 +50,6 @@ function add_row() {
 }
 
 add_row
+
+exit 0
+#bash host_usage.sh localhost 5432 host_agent postgres password run
