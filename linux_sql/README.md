@@ -1,6 +1,3 @@
-```markdown
-Note: You are NOT allowed to copy any content from the scrum board, including text, diagrams, code, etc.. Your Github will be visible and shared with Jarvis clients, so you have to create unique content that impress your future boss😎.
-
 # Introduction
 (about 150-200 words)
 Discuss the design of the project. What does this project/product do? Who are the users? What are the technolgoies you have used? (e.g. bash, docker, git, etc..)
@@ -61,4 +58,4 @@ Write at least three things you want to improve
 - create exception handler.
 - write explanations for all functions.
 - create a file to run all functions at once.
-```
+
