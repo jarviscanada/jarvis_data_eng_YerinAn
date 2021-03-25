@@ -2,14 +2,14 @@
 This project is mainly about simulating the grep command functionality using Java. It takes three arguments: the parameters, root directory path, a regular expression to be matched, and the output file path. It recursively walks through the root directory, then finds the files containing the given regular expression then puts those lines to the output file. Its first version is using standard Java IO operation to perform the functionality. The second version is using the lambda function and stream API from Java to optimize the performance.
 
 # Quick Start
-It takes three arguments.
-
 **rootDirectory**: the root directory path to do the recursive operations.
 **regex pattern**: the regular expression to be matched in files.
 **output file path**: the result will be redirected to this file.
 
 JavaGrep regex rootPath outFile
-`JavaGrep .*Romeo.*Juliet.* /path/to/file/shakespeare.txt ./`
+```
+JavaGrep .*Romeo.*Juliet.* /path/to/file/shakespeare.txt ./
+```
 
 #Implementation
 ## Pseudocode
