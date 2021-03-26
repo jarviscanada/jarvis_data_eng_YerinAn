@@ -18,7 +18,6 @@ public class Order implements DataTransferObject {
   private String salespersonEmail;
   private List<OrderLine> orderLines;
 
-
   @Override
   public long getId() {
     return id;
