@@ -38,4 +38,4 @@ email, phone, address, city, state, zipcode FROM customer WHERE customer_id=1000
 
 |customer_id|first_name|last_name|email|phone|address|city|state|zipcode|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|1000|Victor|Woods|vwoodsp0@blogtalkradio.com|(786)720-8933|00|Bunting|Terrace|Miami|FL|33164|
+|1000|Victor|Woods|vwoodsp0@blogtalkradio.com|(786)720-8933|00 Bunting Terrace|Miami|FL|33164|
