@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CustomerDAO extends DataAccessObject<Customer> {
   private static final String INSERT = "INSERT INTO customer (first_name, last_name," +
@@ -26,6 +28,8 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
   private static final String GET_ALL_PAGED = "SELECT customer_id, first_name, last_name, email, phone, " +
       "address, city, state, zipcode FROM customer ORDER BY last_name, first_name LIMIT ? OFFSET ?";
+
+  private static final Logger logger = LoggerFactory.getLogger(CustomerDAO.class);
 
   public CustomerDAO(Connection connection) {
     super(connection);
@@ -49,7 +53,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
         customer.setZipCode(rs.getString("zipcode"));
       }
     }catch (SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: CUSTOMER FIND BY ID");
       throw new RuntimeException(e);
     }
     return customer;
@@ -66,7 +70,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
     try{
       this.connection.setAutoCommit(false);
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: AUTO COMMIT");
       throw new RuntimeException(e);
     }
     try(PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
@@ -86,10 +90,10 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       try{
         this.connection.rollback();
       }catch (SQLException sqle){
-        e.printStackTrace();
+        logger.error("ERROR: CONNECTING CUSTOMER TABLE");
         throw new RuntimeException(sqle);
       }
-      e.printStackTrace();
+      logger.error("ERROR: UPDATE CUSTOMER");
       throw new RuntimeException(e);
     }
     return customer;
@@ -110,7 +114,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       int id = this.getLastVal(CUSTOMER_SEQUENCE);
       return this.findById(id);
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: CREATE CUSTOMER");
       throw new RuntimeException(e);
     }
   }
@@ -134,7 +138,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
         customers.add(customer);
       }
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: FIND ALL SORTED");
       throw new RuntimeException(e);
     }
     return customers;
@@ -164,7 +168,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
         customers.add(customer);
       }
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: FIND ALL PAGED");
       throw new RuntimeException(e);
     }
     return customers;
@@ -176,7 +180,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       statement.setLong(1, id);
       statement.execute();
     }catch (SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: DELETE CUSTOMER");
       throw new RuntimeException(e);
     }
   }

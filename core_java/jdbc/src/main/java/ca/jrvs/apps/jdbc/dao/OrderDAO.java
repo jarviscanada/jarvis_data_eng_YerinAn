@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class OrderDAO extends DataAccessObject<Order> {
@@ -22,6 +24,7 @@ public class OrderDAO extends DataAccessObject<Order> {
 
   private static final String GET_FOR_CUST = "SELECT * FROM get_orders_by_customer(?)";
 
+  private static final Logger logger = LoggerFactory.getLogger(OrderDAO.class);
 
   public OrderDAO(Connection connection) {
     super(connection);
@@ -61,7 +64,7 @@ public class OrderDAO extends DataAccessObject<Order> {
       }
       order.setOrderLines(orderLines);
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: ORDER FIND BY ID");
       throw new RuntimeException(e);
     }
     return order;
@@ -123,7 +126,7 @@ public class OrderDAO extends DataAccessObject<Order> {
         order.getOrderLines().add(orderLine);
       }
     }catch(SQLException e){
-      e.printStackTrace();
+      logger.error("ERROR: GET ORDER FOR CUSTOMER");
       throw new RuntimeException(e);
     }
     return orders;

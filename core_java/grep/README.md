@@ -4,11 +4,13 @@ This project is mainly about simulating the grep command functionality using Jav
 # Quick Start
 **rootDirectory**: the root directory path to do the recursive operations.
 **regex pattern**: the regular expression to be matched in files.
-**output file path**: the result will be redirected to this file.
+**output filepath**: the result will be redirected to this file.
+
+Example of program arguments: `.*IllegalArgumentException.* ./src /tmp/grep.out`
 
 JavaGrep regex rootPath outFile
 ```
-JavaGrep .*Romeo.*Juliet.* /path/to/file/shakespeare.txt ./
+JavaGrep .*Romeo.*Juliet.* /path/to /file/shakespeare.txt ./
 ```
 
 #Implementation
