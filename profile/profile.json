@@ -1,0 +1,140 @@
+{
+  "education": [
+    {
+      "awards_achievements": null,
+      "degree": "Advanced Diploma of Software Engineering Technology",
+      "department": "Electrical and Computer Engineering",
+      "duration": "2017-2020",
+      "school_name": "Centennial College"
+    },
+    {
+      "awards_achievements": null,
+      "degree": "Bachelor Degree of Architecture",
+      "department": "Architecture",
+      "duration": "2005-2011",
+      "school_name": "Hoseo University"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_YerinAn",
+  "highlighted_projects": [
+    {
+      "description": "Created an application that any company or customer can make their online website based on their products and analyze the online business. Worked with Java 11, Vue, Javascript, Spring boot, and MS SQL.",
+      "git_url": "https://github.com/caiquebispoferreira/resourceserver",
+      "name": "MODERN ERP application"
+    },
+    {
+      "description": "Designed a web application which is a space shooting game that uses Typescript, Javascript and CreateJs, and it works with a keyboard. Adjusted three stages that the difficulty level through different enemies, options, items and a high scoreboard.",
+      "git_url": "https://github.com/Calvin05/WebGamming-Group1",
+      "name": "WebGaming - Space defenders"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": "Developed an internal tool to collect and save both server hardware specifications and on-going Linux resource usage data so that users can know their cluster status better. ⋅\tUtilized the docker container to provision the database ⋅\tCreated bash scripts for monitoring nodes ⋅\tDeveloped SQL queries to store and retrieve data",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitor"
+    },
+    {
+      "description": [
+        "Twitter App: In development",
+        "JDBC App: Implemented an application that uses JDBC to build a connection between Java and PostgreSQL database. developed CRUD operations by using the DAO design pattern.",
+        "Grep App: Developed an application that has the functionality to a simplified the Linux grep command using Java. Used the lambda function and stream API from Java to optimize the final project performance.   "
+      ],
+      "git_url": "/core_java",
+      "name": "Core Java Apps"
+    },
+    {
+      "description": "In development",
+      "git_url": "/springboot",
+      "name": "Springboot App"
+    },
+    {
+      "description": "In development",
+      "git_url": "/python_data_anlytics",
+      "name": "Python Data Analytics"
+    },
+    {
+      "description": "In development",
+      "git_url": "/hadoop",
+      "name": "Hadoop"
+    },
+    {
+      "description": "In development",
+      "git_url": "/spark",
+      "name": "Spark"
+    },
+    {
+      "description": "In development",
+      "git_url": "/cloud_devops",
+      "name": "Cloud/DevOps"
+    }
+  ],
+  "name": "Yerin An",
+  "others": [
+    {
+      "bullets": [
+        "Psychology for Digital Behavior Change [DBC1] (2019)",
+        "Psychological Architectures of Digital Behavior Change [DBC2] (2019)",
+        "Certificate of Completion for the workshop Emotional Design Psychology [EDP] (2019)"
+      ],
+      "title": "Certificates"
+    },
+    {
+      "bullets": [
+        "Music - composing, DJing, guitar",
+        "Competitive gaming",
+        "Collecting Lego"
+      ],
+      "title": "Activities/Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Jarvis",
+      "description": "Developed Data Engineering projects in Java using technologies such as Git, Java, Maven, Docker, Springboot, RDBMS/SQL, Python. Collaborated with a team in daily Scrum meetings to implement Agile development practices.",
+      "duration": "2021-present",
+      "title": "Software Developer"
+    },
+    {
+      "company": "Centennial College",
+      "description": "migrated a legacy medical application from Flex code to Java 11 using Spring Framework and Angular. ⋅\tCreated Spring Rest APIs to persist, merge, delete and list patients, encounters, billings, etc. ⋅\tReplaced some Hibernate/JPQL queries with MSSQL/SQL native queries to increase some routers' performance. ⋅\tCreated and merge branches to manage the code version using Github ⋅\tSupported the frontend teams with bug triage, troubleshooting/debugging and resolution (Jira for tickets and Confluence for API documentation) ⋅\tCreated test stubs for unit testing, system testing and integration testing using JUnit ⋅\tParticipated in resolving technical issues that arise during development ⋅\tParticipated in Agile Scrum meetings. ⋅\tExcellent written and verbal communication skills with my supervisors and co-workers",
+      "duration": "2020-2021",
+      "title": "Backend Developer"
+    },
+    {
+      "company": "AlterSpark-Digital Psychology \u0026 Behaviour Design",
+      "description": "Worked as a web developer and assisted our team in migrating a psychological website from bootstrap3 to bootstrap4. Also, I developed a dashboard with charts using Javascript and showing analyzed personal based on the pictures and profiles with some machine learning models. ⋅ Built heatmaps, charts using HTML, CSS, JavaScript and NodeJS ⋅\tBuilt photo-programs that can resize, reduce resolution, and rename with Python and Django ⋅\tAnalyzed pictures using classification ⋅\tDevelop web sites using bootstrap4 ⋅\tBuilt photo library with JSON",
+      "duration": "2019",
+      "title": "UX/UI designer \u0026 Web developer | Co-op"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "JavaScript",
+      "HTML/CSS",
+      "Python",
+      "Docker",
+      "Algorithms/Data structures",
+      "Jupyter notebook",
+      "Pandas"
+    ],
+    "familiar": [
+      "C#",
+      "Vue",
+      "Android",
+      "React",
+      "Angular"
+    ],
+    "proficient": [
+      "Java",
+      "Linux/Bash",
+      "RDBMS/SQL",
+      "Agile/Scrum",
+      "Git",
+      "REST APIs",
+      "SpringBoot",
+      "Hibernate"
+    ]
+  },
+  "summary": "I am a junior software developer with Jarvis and graduate from Centennial College with an Advanced Diploma of Software Engineering Technology. Also, I have a bachelor's degree in Architecture. I have always been passionate about new technology and thinking of integrating technology into our daily lives. And it gives me to motivate and learn that can improve myself. I have experience as a back-end developer for around a year, and I worked with REST APIs, data analytics, and application development. I look forward to working in data engineering and getting a chance to contribute to the innovations."
+}
