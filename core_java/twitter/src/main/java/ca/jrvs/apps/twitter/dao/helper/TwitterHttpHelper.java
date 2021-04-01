@@ -8,7 +8,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
@@ -68,17 +67,5 @@ public class TwitterHttpHelper implements HttpHelper{
     } catch (Exception e) {
       throw new RuntimeException("ERROR: GET EXECUTE", e);
     }
-  }
-
-  public static void main(String[] args) throws Exception {
-    String CONSUMER_KEY = System.getenv("consumerKey");
-    String CONSUMER_SECRET = System.getenv("consumerSecret");
-    String ACCESS_TOKEN = System.getenv("accessToken");
-    String TOKEN_SECRET = System.getenv("tokenSecret");
-
-    HttpHelper httpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
-    HttpResponse response = httpHelper
-        .httpPost(new URI("https://api.twitter.com/1.1/statuses/update.json?status=happy_holidays"));
-    System.out.println(EntityUtils.toString(response.getEntity()));
   }
 }
