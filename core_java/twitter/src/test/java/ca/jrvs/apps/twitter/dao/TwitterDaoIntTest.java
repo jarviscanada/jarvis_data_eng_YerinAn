@@ -13,6 +13,11 @@ import org.junit.Test;
 public class TwitterDaoIntTest {
 
   private TwitterDao twitterDao;
+  private static String id_str;
+  private static String text="";
+  private static String hashTag="";
+  private static Double lat = null;
+  private static Double lon = null;
 
   @Before
   public void setUp() throws Exception {
@@ -26,12 +31,13 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() {
-    String hashTag="hello";
-    String text="testing create tweet2 #" + hashTag + " " + System.currentTimeMillis();
-    Double lat = 43d;
-    Double lon = 79d;
-    Tweet postTweet = twitterDao.create(TweetUtils.buildTweet(text, lon, lat));
+    hashTag="hello";
+    text="testing final #" + hashTag + " " + System.currentTimeMillis();
+    lat = 43d;
+    lon = 79d;
+    Tweet postTweet = twitterDao.create(TweetUtils.buildTweet(text, lon, lat, hashTag));
     List<Double> coordinateList = postTweet.getCoordinates().getCoordinates();
+    id_str = postTweet.getId_str();
     assertEquals(text, postTweet.getText());
     assertNotNull(postTweet.getCoordinates());
     assertEquals(lon, coordinateList.get(0));
@@ -39,11 +45,31 @@ public class TwitterDaoIntTest {
     assertEquals(hashTag, postTweet.getEntities().getHashtags().get(0).getText());
   }
 
-//  @Test
-//  public void findById() {
-//  }
-//
-//  @Test
-//  public void deleteById() {
-//  }
+  @Test
+  public void findById() {
+    Tweet getTweet = twitterDao.findById(id_str);
+    List<Double> coordinateList = getTweet.getCoordinates().getCoordinates();
+    assertEquals(text, getTweet.getText());
+    assertNotNull(getTweet.getCoordinates());
+    assertEquals(lon, coordinateList.get(0));
+    assertEquals(lat, coordinateList.get(1));
+    assertEquals(hashTag, getTweet.getEntities().getHashtags().get(0).getText());
+  }
+
+  @Test
+  public void deleteById() {
+    Tweet tweet = twitterDao.deleteById(id_str);
+    List<Double> coordinateList = tweet.getCoordinates().getCoordinates();
+    assertEquals(text, tweet.getText());
+    assertNotNull(tweet.getCoordinates());
+    assertEquals(lon, coordinateList.get(0));
+    assertEquals(lat, coordinateList.get(1));
+    assertEquals(hashTag, tweet.getEntities().getHashtags().get(0).getText());
+    try{
+      twitterDao.findById(id_str);
+      fail();
+    }catch (Exception e){
+      assertTrue(true);
+    }
+  }
 }

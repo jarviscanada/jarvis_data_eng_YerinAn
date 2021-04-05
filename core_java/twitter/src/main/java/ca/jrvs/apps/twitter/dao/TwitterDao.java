@@ -49,7 +49,7 @@ public class TwitterDao implements CrdDao<Tweet, String>{
         uri = API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + string;
         break;
       case "DELETE":
-        uri = API_BASE_URI + DELETE_PATH + string + ".json";
+        uri = API_BASE_URI + DELETE_PATH + "/" + string + ".json";
         break;
     }
     try {
@@ -70,12 +70,20 @@ public class TwitterDao implements CrdDao<Tweet, String>{
 
   @Override
   public Tweet findById(String s) {
-    return null;
+    URI uri = setURI(null, "SHOW", s);
+    HttpResponse response = null;
+    if(uri != null)
+      response = httpHelper.httpGet(uri);
+    return checkingTweetResponse(response, HTTP_OK);
   }
 
   @Override
   public Tweet deleteById(String s) {
-    return null;
+    URI uri = setURI(null, "DELETE", s);
+    HttpResponse response = null;
+    if(uri != null)
+      response = httpHelper.httpPost(uri);
+    return checkingTweetResponse(response, HTTP_OK);
   }
 
   public Tweet checkingTweetResponse(HttpResponse response, Integer expectedStatusCode){
