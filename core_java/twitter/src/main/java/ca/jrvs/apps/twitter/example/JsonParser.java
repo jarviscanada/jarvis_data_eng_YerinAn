@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 
-public class JasonParser {
+public class JsonParser {
 
   /**
    * Convert a java object to JSON string
