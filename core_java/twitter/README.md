@@ -125,6 +125,6 @@ docker push ${docker_user}/twitter
 ```
 
 # Improvements
-- Imporvement 1
-- Imporvement 2
-- Imporvement 3
+- Remove some hardcoded, repeated strings from error message to reduce redundancy.
+- Implement PUT feature to update an existing tweet from user.
+- Connecting Database to set up key values, also check duplicated values.
