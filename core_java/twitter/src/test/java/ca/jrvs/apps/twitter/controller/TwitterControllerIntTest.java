@@ -37,7 +37,7 @@ public class TwitterControllerIntTest {
   @Test
   public void T010_postTweet() {
     hashTag="hash";
-    text="controller Testing #" + hashTag + " " + System.currentTimeMillis();
+    text="controller Testing00 #" + hashTag + " " + System.currentTimeMillis();
     lat = 43d;
     lon = 79d;
     Tweet tweet = controller.postTweet(new String[]{"post", text, lat + ":" + lon});
@@ -71,7 +71,7 @@ public class TwitterControllerIntTest {
     Double lon_ = 45d;
     Double lat_ = 45d;
     for(int i=0; i<num; i++){
-      text_arr[i] = "testing multiple insert #" + hash_tag + " " + System.currentTimeMillis();
+      text_arr[i] = "testing multiple insert" + String.valueOf(i) +" #" + hash_tag + " " + System.currentTimeMillis();
       Tweet newTweet = controller.postTweet(new String[]{"post", text_arr[i], lat_ + ":" + lon_});
       id_arr[i] = newTweet.getId_str();
     }

@@ -32,7 +32,7 @@ public class TwitterDaoIntTest {
   @Test
   public void create() {
     hashTag="hello";
-    text="testing final #" + hashTag + " " + System.currentTimeMillis();
+    text="testing final00 #" + hashTag + " " + System.currentTimeMillis();
     lat = 43d;
     lon = 79d;
     Tweet postTweet = twitterDao.create(TweetUtils.buildTweet(text, lon, lat, hashTag));
