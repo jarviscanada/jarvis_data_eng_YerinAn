@@ -41,8 +41,7 @@ public class TwoSum {
       else if(result < target)
         indexL++;
       else{
-        int[] result_arr = new int[]{nums[indexL], nums[indexR]};
-        return result_arr;
+        return new int[]{nums[indexL], nums[indexR]};
       }
     }
     throw new IllegalArgumentException("No two sum solution");
