@@ -34,7 +34,7 @@ public class TwoSum {
     Arrays.sort(nums);
     int indexL=0;
     int indexR=nums.length-1;
-    while(indexR > indexL){
+    while(indexR >= indexL){
       int result = nums[indexL] + nums[indexR];
       if(result > target)
         indexR--;
