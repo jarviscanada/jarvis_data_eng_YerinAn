@@ -40,9 +40,8 @@ public class TwoSum {
         indexR--;
       else if(result < target)
         indexL++;
-      else{
+      else
         return new int[]{nums[indexL], nums[indexR]};
-      }
     }
     throw new IllegalArgumentException("No two sum solution");
   }
