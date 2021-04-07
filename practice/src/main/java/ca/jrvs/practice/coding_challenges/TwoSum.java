@@ -34,15 +34,14 @@ public class TwoSum {
     Arrays.sort(nums);
     int indexL=0;
     int indexR=nums.length-1;
-    while(indexR > indexL){
+    while(indexR >= indexL){
       int result = nums[indexL] + nums[indexR];
       if(result > target)
         indexR--;
       else if(result < target)
         indexL++;
       else{
-        int[] result_arr = new int[]{nums[indexL], nums[indexR]};
-        return result_arr;
+        return new int[]{nums[indexL], nums[indexR]};
       }
     }
     throw new IllegalArgumentException("No two sum solution");
