@@ -10,12 +10,6 @@ import java.util.HashMap;
  * You can return the answer in any order.
  */
 public class TwoSum {
-//  public static void main(String[] args) {
-//    int[] nums = { 3,9,5,7,4,1};
-//    int target = 9;
-//    System.out.println(Arrays.toString(twoSumBruteForce(nums, target)));
-//  }
-
   /**
    * Time complexity: O(n^2)
    * nested for loop
