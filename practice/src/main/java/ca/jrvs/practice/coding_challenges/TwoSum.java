@@ -16,8 +16,8 @@ public class TwoSum {
    */
   public int[] twoSumBruteForce(int[] nums, int target){
     for(int i=0; i < nums.length; i++){
-      for(int j=0; j<nums.length; j++){
-        if((nums[i] + nums[j] == target) && (nums[i] != nums[j])){
+      for(int j=i+1; j<nums.length; j++){
+        if(nums[j] == target - nums[i]){
           return new int[]{nums[i], nums[j]};
         }
       }
