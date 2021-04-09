@@ -47,20 +47,6 @@ public class LinkedJList<E> implements JList<E> {
     size++;
   }
 
-//  public static void main(String[] args) {
-//    LinkedJList<Integer> l = new LinkedJList<>();
-//    l.add(1);
-//    l.add(2);
-//    l.add(3);
-//    l.add(4);
-//    l.add(5);
-//    l.add(6);
-//    l.add(7);
-//    System.out.println(Arrays.toString(l.toArray()));
-//    l.clear();
-//    System.out.println(Arrays.toString(l.toArray()));
-//  }
-
   @Override
   public boolean add(E e) {
     addToTail(e);
