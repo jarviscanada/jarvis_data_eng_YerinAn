@@ -1,6 +1,5 @@
 package ca.jrvs.practice.data_structure.list;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
