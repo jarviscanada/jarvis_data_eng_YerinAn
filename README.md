@@ -19,7 +19,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_YerinAn](h
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/core_java)]:
       
-  - Twitter App: In development
+  - Twitter App: Twitter App allows users to post, get, and delete tweets from Twitter with a developer account. It uses MVC(Model-View-Controller) design pattern to manage the code structure. The Rest APIs interact with Twitter, Maven and Spring as dependency managers, JUnit and Mockito for testing, and Docker for the deployment.
   - JDBC App: Implemented an application that uses JDBC to build a connection between Java and PostgreSQL database. developed CRUD operations by using the DAO design pattern.
   - Grep App: Developed an application that has the functionality to a simplified the Linux grep command using Java. Used the lambda function and stream API from Java 8 to optimize the final project performance. Maven and Docker were used to building, deploying and running the app.
 
