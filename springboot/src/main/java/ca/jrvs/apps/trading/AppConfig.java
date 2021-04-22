@@ -3,6 +3,8 @@ package ca.jrvs.apps.trading;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -32,5 +34,13 @@ public class AppConfig {
     basicDataSource.setUsername(user);
     basicDataSource.setPassword(password);
     return basicDataSource;
+  }
+
+  @Bean
+  public HttpClientConnectionManager httpClientConnectionManager(){
+    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+    cm.setMaxTotal(50);
+    cm.setDefaultMaxPerRoute(50);
+    return cm;
   }
 }
