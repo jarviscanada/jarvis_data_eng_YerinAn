@@ -4,11 +4,9 @@ import static org.junit.Assert.*;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Trader;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.util.Lists;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
