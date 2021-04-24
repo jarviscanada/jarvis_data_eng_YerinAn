@@ -76,6 +76,13 @@ public class OrderService {
     return securityOrder;
   }
 
+  /**
+   * Check orderDto value
+   * - if dto is null or accountId is null, throw error
+   * - if ticker is not exist, throw error
+   * - if order size is 0, throw error
+   * @param orderDto
+   */
   private void validateOrderDto(MarketOrderDto orderDto){
     if(orderDto == null || orderDto.getAccountId() == null ||
         orderDto.getTicker() == null || orderDto.getSize() == null)
@@ -131,15 +138,25 @@ public class OrderService {
     securityOrderDao.save(securityOrder);
   }
 
+  /**
+   * 1. check quote is present: if quote does not exist, throw error
+   * 2. buy(Boolean isBuy == true)
+   *    - check account amount: if amount is 0, throw error
+   *    - check order size: if size is negative value, throw error
+   * 3. sell(Boolean isBuy == false)
+   *    - check position exists: if position does not exist, throw error
+   *    - check order size: if size is positive value, throw error
+   *    - check security order size: if security order size is less than request order size, throw error
+   */
   private void invalidMarketOrder(Boolean isBuy, Optional<Quote> quote, Account account, MarketOrderDto orderDto){
     if(!quote.isPresent())
       throw new IllegalArgumentException("ERROR: INVALID TICKER");
-    if(isBuy){
+    if(isBuy){ //Buy Market Order
       if(account.getAmount() <= 0)
         throw new IllegalArgumentException("ERROR: INSUFFICIENT FUNDS");
       if(orderDto.getSize() <= 0)
         throw new IllegalArgumentException("ERROR: INVALID BUYING");
-    }else{
+    }else{ //sell Market order
       if(!positionDao.existsById(account.getId()))
         throw new IllegalArgumentException("ERROR: CHECK YOUR POSITION");
       List<SecurityOrder> sOrder = securityOrderDao.findByAccountId(account.getId(), orderDto.getTicker());
