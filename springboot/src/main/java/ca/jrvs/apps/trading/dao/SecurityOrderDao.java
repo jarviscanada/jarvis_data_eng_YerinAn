@@ -1,10 +1,12 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
+import java.util.List;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,7 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder>{
   private static final Logger logger = LoggerFactory.getLogger(TraderDao.class);
   private final String TABLE_NAME = "security_order";
   private final String ID_COLUMN = "id";
+  private final String ACCOUNT_ID_COLUMN = "account_id";
 
   private JdbcTemplate jdbcTemplate;
   private SimpleJdbcInsert simpleInsert;
@@ -65,5 +68,14 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder>{
   @Override
   public void deleteAll(Iterable<? extends SecurityOrder> entities) {
     throw new UnsupportedOperationException("Not implemented");
+  }
+
+  public void deleteByAccountId(Integer accountId){
+    String query = "DELETE FROM " + TABLE_NAME + " WHERE " + ACCOUNT_ID_COLUMN + " =?";
+    try{
+      getJdbcTemplate().update(query, accountId);
+    }catch (DataRetrievalFailureException e){
+      logger.error("ERROR: FAILED TO DELETE" + accountId);
+    }
   }
 }

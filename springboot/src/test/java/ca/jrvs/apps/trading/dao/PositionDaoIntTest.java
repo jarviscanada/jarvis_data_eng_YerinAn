@@ -91,15 +91,9 @@ public class PositionDaoIntTest {
 
   @Test
   public void T010_findById(){
-    Optional<Position> result = positionDao.findById(securityOrder.getAccountId());
-    assertTrue(result.isPresent());
-    assertEquals(account.getId(), result.get().getAccountId());
-  }
-
-  @Test
-  public void T020_findAllById(){
-    List<Position> results = positionDao.findAllById(Arrays.asList(securityOrder.getAccountId()));
-    assertEquals(securityOrder.getAccountId(), results.get(0).getAccountId());
+    List<Position> result = positionDao.findById(securityOrder.getAccountId());
+    assertTrue(result.size() > 0);
+    assertEquals(account.getId(), result.get(0).getAccountId());
   }
 
   @Test
