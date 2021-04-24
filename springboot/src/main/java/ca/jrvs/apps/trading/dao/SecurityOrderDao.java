@@ -1,12 +1,17 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
+import ca.jrvs.apps.trading.utils.Status;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -17,6 +22,7 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder>{
   private final String TABLE_NAME = "security_order";
   private final String ID_COLUMN = "id";
   private final String ACCOUNT_ID_COLUMN = "account_id";
+  private final String STATUS_FILED = Status.FILLED.getValue();
 
   private JdbcTemplate jdbcTemplate;
   private SimpleJdbcInsert simpleInsert;
@@ -77,5 +83,17 @@ public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder>{
     }catch (DataRetrievalFailureException e){
       logger.error("ERROR: FAILED TO DELETE" + accountId);
     }
+  }
+
+  public List<SecurityOrder> findByAccountId(Integer accountId, String ticker){
+    String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ACCOUNT_ID_COLUMN + " =? AND " +
+        "ticker = ? AND status = " + STATUS_FILED;
+    List<SecurityOrder> entity = new ArrayList<>();
+    try{
+      entity = getJdbcTemplate().query(query, BeanPropertyRowMapper.newInstance(getEntityClass()), accountId, ticker);
+    } catch (IncorrectResultSizeDataAccessException e){
+      logger.debug("Can't find account id/quote id:", e);
+    }
+    return entity;
   }
 }

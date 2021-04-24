@@ -27,12 +27,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AccountDaoIntTest {
 
   @Autowired
-  AccountDao accountDao;
+  private AccountDao accountDao;
   @Autowired
-  TraderDao traderDao;
+  private TraderDao traderDao;
 
-  Account account;
-  Trader trader;
+  private Account account;
+  private Trader trader;
 
   @Before
   public void setUp() throws Exception {
