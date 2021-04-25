@@ -102,6 +102,7 @@ public class DashboardServiceIntTest {
   public void getTraderAccount() {
     traderAccountView = dashboardService.getTraderAccount(trader.getId());
     assertEquals(trader.getId(), traderAccountView.getTrader().getId());
+    assertEquals(account.getAmount(), traderAccountView.getAccount().getAmount());
   }
 
   @Test
