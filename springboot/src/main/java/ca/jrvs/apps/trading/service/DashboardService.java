@@ -5,9 +5,12 @@ import ca.jrvs.apps.trading.dao.PositionDao;
 import ca.jrvs.apps.trading.dao.QuoteDao;
 import ca.jrvs.apps.trading.dao.TraderDao;
 import ca.jrvs.apps.trading.model.domain.Account;
+import ca.jrvs.apps.trading.model.domain.Position;
+import ca.jrvs.apps.trading.model.domain.Trader;
 import ca.jrvs.apps.trading.model.view.PortfolioView;
 import ca.jrvs.apps.trading.model.view.TraderAccountView;
-import io.swagger.models.auth.In;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +42,15 @@ public class DashboardService {
    * @throws IllegalArgumentException if traderId is null or not found
    */
   public TraderAccountView getTraderAccount(Integer traderId){
+    validTraderId(traderId);
+    Optional<Trader> trader = traderDao.findById(traderId);
+    Optional<Account> account = accountDao.findByTraderId(traderId);
+    return new TraderAccountView(trader.get(), account.get());
+  }
 
+  public void validTraderId(Integer traderId){
+    if(traderId == null || traderId <= 0)
+      throw new IllegalArgumentException("ERROR: INVALID TRADER ID");
   }
 
   /**
@@ -52,13 +63,19 @@ public class DashboardService {
    * @throws IllegalArgumentException if trader id is null or not found
    */
   public PortfolioView getProfileViewByTraderId(Integer traderId){
-
+    validTraderId(traderId);
+    List<Position> positions = null;
+    Optional<Account> account = accountDao.findByTraderId(traderId);
+    if(account.isPresent())
+      positions = positionDao.findById(account.get().getId());
+    return new PortfolioView(positions, account.get());
   }
 
   /**
    * @throws IllegalArgumentException if trader id is not found
    */
   private Account findAccountByTraderId(Integer traderId){
-
+    validTraderId(traderId);
+    return accountDao.findByTraderId(traderId).get();
   }
 }
