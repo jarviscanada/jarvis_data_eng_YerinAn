@@ -68,32 +68,91 @@ The application is a Microservice backend that is implemented using Java and Spr
 
 ## REST API Usage
 ### Swagger
-What's swagger (1-2 sentences, you can copy from swagger docs). Why are we using it or who will benefit from it?
+Swagger is a set of open-source tools built around the OpenAPI Specification that can help you design, build, document and consume REST APIs. Also,  This tool assists in the entire development cycle of the API. Users can try out the API calls directly in the browser because It provides interactive API documentation. Through this function, it makes it easy for developers to test the API on HTTP clients.
 ### Quote Controller
-- High-level description for this controller. Where is market data coming from (IEX) and how did you cache the quote data (PSQL). Briefly talk about data from within your app
-- briefly explain each endpoint
-  e.g.
-  - GET `/quote/dailyList`: list all securities that are available to trading in this trading system blah..blah..
-### Trader Controller
-- High-level description for trader controller (e.g. it can manage trader and account information. it can deposit and withdraw fund from a given account)
-- briefly explain each endpoint
+- This controller handles HTTP requests that accept stock quotes to and from IEX Cloud and the PSQL instance. Stock market data is retrieved from the IEX Cloud and persisted in the PSQL instance.
+  - GET `/quote/dailyList`: list all securities that are available to trading in this trading system.
+  - GET `/quote/iex/ticker/{ticker}`: retrieves data for a specific quote from IEX Cloud using ticker.
+  - POST `/quote/tickerId/{tickerId}`: retrieves a specific quote with a given ticker from IEX and stores it in the database.
+  - PUT `/quote/`: updates a quote object requested body in the database without using IEX Cloud.
+  - PUT `/quote/iexMarketData`: updates all quotes in the database using IEX Cloud.
+### TraderAccount Controller
+- This controller handles HTTP requests that trader data to and from the PSQL instance.
+    - POST `/trader/`: creates a trader and an account with a given trader object information from the requested body(JSON Format). The amount is 0 as the default setting.
+    - POST `/trader/firstName/{firstName}/lastName/{lastName}/dob/{dob}/country/{country}/email/{email}`: creates a trader and an account with @PathVariable that allows pass info in the URL.
+    - PUT `/trader/deposit/traderId/{traderId}/amount/{amount}`: deposits funds to an account associated with the given traderId, and the fund amount must be greater than 0.
+    - PUT `/trader/withdraw/traderId/{traderId}/amount/{amount}`: withdraws funds to an account associated with the given traderId, and the amount must be greater than funds.
+    - DELETE `/trader/traderId/{traderId}`: deletes a trader if the account amount is 0 and has no open positions also removes the associated account and security orders.
 ### Order Controller
-- High-level description for this controller.
-- briefly explain each endpoint
-### App controller
-- briefly explain each endpoint
-### Optional(Dashboard controller)
-- High-level description for this controller.
-- briefly explain each endpoint
+- This controller handles HTTP requests that security order data in the PSQL instance.
+    - POST `/order/marketOrder/`: It creates a security order with the given market order object requested body into PSQL instance(selling market order if the size has a negative value. if not, buying market order).
+### Dashboard controller
+- This controller handles HTTP requests that read only data from the PSQL instance(it shows PortfolioView and TraderAccountView).
+    - GET `/profile/traderId/{traderId}`: shows the trader and associated account by traderId.
+    - GET `/portfolio/traderId/{traderId}`: It shows all positions that trader requested order have been filed(it shows all the tickers with the stock size that trader has).
 
 # Test 
-How did you test your application? Did you use any testing libraries? What's the code coverage?
+Junit: testing each class independently using Junit4.
+Mockito: If classes had any dependencies, the Mockito framework was used to mock the dependency's behaviours.
 
 # Deployment
-- docker diagram including images, containers, network, and docker hub
-e.g. https://www.notion.so/jarviscanada/Dockerize-Trading-App-fc8c8f4167ad46089099fd0d31e3855d#6f8912f9438e4e61b91fe57f8ef896e0
-- describe each image in details (e.g. how psql initialize tables)
-
+![image_description](assets/docker.png)
+- Dockerfile:
+    ```shell script
+    # all scripts placed under `/docker-entrypoint-initdb.d/` are run when the container is started;
+    # PSQL dockerfile executes copying SQL files and initializing the database and tables.
+    FROM postgres:9.6-alpine
+    COPY /sql_ddl/init_db.sql /sql_ddl/schema.sql /docker-entrypoint-initdb.d/
+    ```
+- Build images:
+    ```shell script
+    # psql image - make sure you are in the psql directory
+    docker build -t traading-psql .
+    # app image - make sure you are in the root directory
+    docker build -t trading-app .
+    ```
+- Create docker network:
+    ```shell script
+    # network helps to communicate among containers
+    docker network create --driver bridge trading-net
+    ```
+- Start containers:
+    ```shell script
+    # start the psql container from the trading-psql image and attach it to the trading-net network
+    docker run --name trading-psql-dev \
+    -e POSTGRES_PASSWORD=password \
+    -e POSTGRES_USER=postgres \
+    --network trading-net \
+    -d -p 5432:5432 trading-psql
+     
+    #set token
+    IEX_PUB_TOKEN="your_token"
+    
+    #start trading-app container which is attached to the trading-net docker network
+    #make sure that trading-psql is running
+    docker run --name trading-app-dev \
+    -e "PSQL_URL=jdbc:postgresql://trading-psql-dev:5432/jrvstrading" \
+    -e "PSQL_USER=postgres" \
+    -e "PSQL_PASSWORD=password" \
+    -e "IEX_PUB_TOKEN=${IEX_PUB_TOKEN}" \
+    --network trading-net \
+    -p 5000:5000 -t trading-app
+    ```
+- Push/pull images to Docker Hub
+    ```shell script
+    #tag the images before pushing
+    docker tag trading-psql anyerin01/trading-psql
+    docker tag trading-app anyerin01/trading-app
+    
+    #push images
+    docker push anyerin01/trading-psql
+    docker push anyerin01/trading-app
+    
+    #pull images
+    docker pull anyerin01/trading-psql
+    docker pull anyerin01/trading-app
+    ```
 # Improvements
-If you have more time, what would you improve?
-- at least 3 improvements
+- Allow for multiple orders to be processed in one API request.
+- Implement token authentication function on the swagger page.
+- Automatically update quote data(last price) every minute from IEX Cloud.

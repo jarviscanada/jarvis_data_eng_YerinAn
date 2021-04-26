@@ -86,6 +86,7 @@ public class TraderAccountService {
     List<Position> positionList = positionDao.findById(account.getId());
     if(positionList.size() > 0)
       throw new IllegalArgumentException("ERROR: OPEN POSITION CANNOT BE DELETED");
+    checkFundValue(true, 0d, account);
     try{
       securityOrderDao.deleteByAccountId(account.getId());
       accountDao.deleteById(account.getId());
@@ -95,12 +96,17 @@ public class TraderAccountService {
     }
   }
 
-  private void checkFundValue(Double fund, Account account){
-    if(fund <= 0)
-      throw new IllegalArgumentException("ERROR: INVALID FUND VALUE");
-    if(account != null){
-      if(account.getAmount() != null && (account.getAmount()-fund < 0))
-        throw new IllegalArgumentException("ERROR: INSUFFICIENT FUND");
+  private void checkFundValue(Boolean isDeleted, Double fund, Account account){
+    if(isDeleted){
+      if(account.getAmount() != 0)
+        throw new IllegalArgumentException("ERROR: BALANCE MUST BE 0");
+    }else {
+      if(fund <= 0)
+        throw new IllegalArgumentException("ERROR: INVALID FUND VALUE");
+      if(account != null){
+        if(account.getAmount() != null && (account.getAmount()-fund < 0))
+          throw new IllegalArgumentException("ERROR: INSUFFICIENT FUND");
+      }
     }
   }
 
@@ -116,7 +122,7 @@ public class TraderAccountService {
    */
   public Account deposit(Integer traderId, Double fund){
     Account account = validateId(traderId);
-    checkFundValue(fund, null);
+    checkFundValue(false, fund, null);
     account.setAmount(account.getAmount() + fund);
     accountDao.updateOne(account);
     return account;
@@ -134,7 +140,7 @@ public class TraderAccountService {
    */
   public Account withdraw(Integer traderId, Double fund){
     Account account = validateId(traderId);
-    checkFundValue(fund, account);
+    checkFundValue(false, fund, account);
     account.setAmount(account.getAmount() - fund);
     accountDao.updateOne(account);
     return account;
