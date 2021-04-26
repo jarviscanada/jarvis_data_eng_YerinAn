@@ -2,7 +2,7 @@ Table of contents
 * [Introduction](#Introduction)
 * [Quick Start](#Quick&nbsp;Start)
 * [Architecture](#Architecture)
-* [REST API Usage](#REST&nbsp;API&nbsp;Usage)
+* [REST API Usage](#REST API Usage)
 * [Test](#Test)
 * [Deployment](#Deployment)
 * [Improvements](#Improvements)
@@ -11,7 +11,7 @@ Table of contents
 This application is an online stock trading simulator using a REST API that returns JSON documents to users. It retrieves the real stock market information using IEX Cloud API(IEX Cloud has delayed stock information), saves and persists data into a database. And, this application allows users to manage client profiles and accounts, monitor portfolio performance, and trade securities. 
 The application is a Microservice backend that is implemented using Java and Springboot with a PSQL database. The application follows MVC and 3-tier architecture.
 
-# Quick Start
+# Quick&nbsp;Start
 - Prequiresites: Docker, CentOS 7
 - Docker scripts with description
 	- build images
