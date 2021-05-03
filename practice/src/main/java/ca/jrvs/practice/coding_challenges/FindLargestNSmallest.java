@@ -10,12 +10,6 @@ import java.util.stream.Collectors;
  */
 public class FindLargestNSmallest {
 
-  public static void main(String[] args) {
-    int[] nums = new int[]{3,2,3,1,2,4,5,5,6};
-    System.out.println(findMinLoop(nums));
-    System.out.println(findMinSteam(nums));
-  }
-
   /**
    * Big-O: O(n) time
    * O(1) space.

@@ -8,11 +8,6 @@ package ca.jrvs.practice.coding_challenges;
  */
 public class RemoveElement {
 
-  public static void main(String[] args) {
-    int[] nums = new int[] {0, 1, 2, 2, 3, 0, 4, 2};
-    System.out.print(removeElement(nums, 2));
-  }
-
   /**
    * Big-O: O(n) time
    * O(1) space
