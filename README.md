@@ -23,7 +23,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_YerinAn](h
   - JDBC App: Implemented an application that uses JDBC to build a connection between Java and PostgreSQL database. developed CRUD operations by using the DAO design pattern.
   - Grep App: Developed an application that has the functionality to a simplified the Linux grep command using Java. Used the lambda function and stream API from Java 8 to optimize the final project performance. Maven and Docker were used to building, deploying and running the app.
 
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/springboot)]: In development
+**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/springboot)]: Trading App is an online stock trading simulator using a REST API that returns JSON documents to users. It retrieves the real stock market information using IEX Cloud API(IEX Cloud has delayed stock information), saves and persists data into a database. And, this application allows users to manage client profiles and accounts, monitor portfolio performance, and trade securities.
 
 **Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/python_data_anlytics)]: In development
 
