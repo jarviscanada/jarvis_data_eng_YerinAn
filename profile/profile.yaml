@@ -52,7 +52,7 @@ jarvis_projects:
       - "Grep App: Developed an application that has the functionality to a simplified the Linux grep command using Java. Used the lambda function and stream API from Java 8 to optimize the final project performance. Maven and Docker were used to building, deploying and running the app."
   - name: "Springboot App"
     git_url: "/springboot"
-    description: "In development"
+    description: "Trading App is an online stock trading simulator using a REST API that returns JSON documents to users. It retrieves the real stock market information using IEX Cloud API(IEX Cloud has delayed stock information), saves and persists data into a database. And, this application allows users to manage client profiles and accounts, monitor portfolio performance, and trade securities."
   - name: "Python Data Analytics"
     git_url: "/python_data_anlytics"
     description: "In development"
