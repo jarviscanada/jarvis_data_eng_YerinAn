@@ -9,16 +9,20 @@
 ![image description](assets/cloud_archiecture.png)
 
 ## Data Analytics and Wrangling
-- Create a link that points to your Jupyter notebook (use the relative path `./retail_data_analytics_wrangling.ipynb`)
-- Discuss how would you use the data to help LGS to increase their revenue (e.g. design a new marketing strategy with data you provided)
-
-This Jupyter Notebook presents the data wrangling on the retail data provided by LGS to answer the following business questions:
+This [Jupyter Notebook](./retail_data_analytics_wrangling.ipynb) presents the data wrangling on the retail data provided by LGS to answer the following business questions:
 - Total Invoice Amount Distribution
+![image_description](assets/data_distrivution_1.png)
+![image_description](assets/data_distribution_2.png)
 - Monthly Placed and Cancelled Orders
+![image_description](assets/placed_cancelled.png)
 - Monthly Sales
+![image_description](assets/monthly_sales.png)
 - Monthly Sales Growth
+![image_description](assets/monthly_sales_growth.png)
 - Monthly Active Users
+![image_description](assets/monthly_active_user.png)
 - Monthly New and Existing Users
+![image_description](assets/new_exist_customers.png)
 - RFM segments
 
 RFM stands for Recency, Frequency, and Monetary.
