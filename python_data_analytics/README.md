@@ -11,8 +11,9 @@
 ## Data Analytics and Wrangling
 This [Jupyter Notebook](./retail_data_analytics_wrangling.ipynb) presents the data wrangling on the retail data provided by LGS to answer the following business questions:
 - Total Invoice Amount Distribution
-![image_description](assets/data_distrivution_1.png)
-![image_description](assets/data_distribution_2.png)
+
+    ![image_description](assets/data_distrivution_1.png)
+    ![image_description](assets/data_distribution_2.png)
 - Monthly Placed and Cancelled Orders
 ![image_description](assets/placed_cancelled.png)
 - Monthly Sales
@@ -30,8 +31,8 @@ RFM stands for Recency, Frequency, and Monetary.
 - Frequency – How often do they purchase?
 - Monetary Value – How much do they spend?
 
-RFM Segmentation allows marketers to gain an extensive understanding of their customers by analyzing those 3 quantifiable factors
-it is a way to analyze customer value.
+RFM Segmentation allows marketers to gain an extensive understanding of their customers by analyzing those 3 quantifiable factors.
+
 ![image_description](assets/rfm.png)
 
 I have paid special attention to 3 segments to increase revenue:
