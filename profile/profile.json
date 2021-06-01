@@ -49,8 +49,8 @@
       "name": "Springboot App"
     },
     {
-      "description": "In development",
-      "git_url": "/python_data_anlytics",
+      "description": "Implemented a data analysis project to help a retail organization figure out decreasing revenue recently. To answer the necessary business questions, analyzing data is essential to do. So, Using a PostgreSQL instance as a data warehouse and Python Pandas/Jupyter to perform OLAP operations and segmented customers (using RFM Segmentation) into important categories to help the company develop targeted marketing strategies",
+      "git_url": "/python_data_analytics",
       "name": "Python Data Analytics"
     },
     {

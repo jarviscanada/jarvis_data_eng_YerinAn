@@ -25,7 +25,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_YerinAn](h
 
 **Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/springboot)]: Trading App is an online stock trading simulator using a REST API that returns JSON documents to users. It retrieves the real stock market information using IEX Cloud API(IEX Cloud has delayed stock information), saves and persists data into a database. And, this application allows users to manage client profiles and accounts, monitor portfolio performance, and trade securities.
 
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/python_data_anlytics)]: In development
+**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/python_data_analytics)]: Implemented a data analysis project to help a retail organization figure out decreasing revenue recently. To answer the necessary business questions, analyzing data is essential to do. So, Using a PostgreSQL instance as a data warehouse and Python Pandas/Jupyter to perform OLAP operations and segmented customers (using RFM Segmentation) into important categories to help the company develop targeted marketing strategies
 
 **Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/hadoop)]: In development
 
