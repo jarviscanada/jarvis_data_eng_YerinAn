@@ -17,8 +17,8 @@ Table of contents
 
 # Hadoop Cluster
 - The hadoop cluster consisted a master node and two subordinate worker nodes using GCP Dataproc. All three-nodes have the same hardware specifications: 2 vCPUs, 12GB RAM and 100GB HDD.
-![image description](assets/hadoop_cluster.png)
 - Dataproc uses image versions to bundle operating-system, big data components, and GCP connectors into one package deployed on a cluster.
+![image description](assets/hadoop_cluster.png)
 - MASTER NODE
     - A layered application architecture exists in the master node. The lowest layer is the HDFS Name Node, which manages data storage among the HDFS Data Nodes hosted on the worker nodes in the cluster. 
     - YARN Resource Manager coordinates the allocation of computing resources on the cluster. To run the application on YARN, a Client contacts the YARN Resource Manager and asks it to run an application master process. 
