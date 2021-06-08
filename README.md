@@ -27,7 +27,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_YerinAn](h
 
 **Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/python_data_analytics)]: Implemented a data analysis project to help a retail organization figure out decreasing revenue recently. To answer the necessary business questions, analyzing data is essential to do. So, Using a PostgreSQL instance as a data warehouse and Python Pandas/Jupyter to perform OLAP operations and segmented customers (using RFM Segmentation) into important categories to help the company develop targeted marketing strategies
 
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/hadoop)]: In development
+**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/hadoop)]: Deployed three-nodes Hadoop cluster using Google Cloud Platform Dataproc and performed data processing/analytics using Hive and Zeppelin. Also, evaluated HDFS, MapReduce, and YARN; Using the distributed storage and processing capabilities of the Hadoop ecosystem to examine the 2016 World Development Indicators dataset, optimize it using Parquet and Partitioning for analyzing data.
 
 **Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/spark)]: In development
 
