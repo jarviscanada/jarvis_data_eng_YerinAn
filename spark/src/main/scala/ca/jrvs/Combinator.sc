@@ -1,7 +1,4 @@
-import java.io.InputStream
-
-import scala.io.Source
-
+import scala.reflect.io.File
 
 /**
  * Count number of elements
@@ -43,7 +40,10 @@ val mapFlatten = numList.map(i=>i.map(_ * 2)).flatten
  * Compare reduce and foldLeft
  * https://stackoverflow.com/questions/7764197/difference-between-foldleft-and-reduceleft-in-scala
  */
-//write you solution here
+val sumList = List.range(1,11)
+sumList.sum
+sumList.reduce((x, y) => x + y)
+sumList.foldLeft(0)(_ + _)
 
 
 /**
@@ -77,9 +77,7 @@ val tuples = names.map(name => (name, countryMap.getOrElse(name, "n/a")))
  * e.g. res0: scala.collection.immutable.Map[String,Int] = Map(Canada -> 2, n/a -> 1, US -> 1)
  * hint: map(get_value_from_map) ; groupBy country; map to (country,count)
  */
-//tuples.groupBy(identity)
-
-
+tuples.map(tuple => tuple._2).groupBy(identity).mapValues(_.size)
 
 /**
  * number each name in the list from 1 to n
@@ -95,15 +93,9 @@ addedNum.zip(names2)
  * read file lines into a list
  * lines: List[String] = List(id,name,city, 1,amy,toronto, 2,bob,calgary, 3,chris,toronto, 4,dann,montreal)
  */
-val stream: InputStream = getClass.getResourceAsStream("employees.csv")
-val s = Source.fromInputStream(stream).getLines().toList
-
-
-//val file = getClass.getResource("/employees.csv").getFile()
-//val source = Source.fromInputStream( stream ).getLines.toList
-//val source = Source.fromURL(getClass.getResource("/employees.csv")).getLines().toList.drop(1)
-
-
+val employeeData = File("/Users/biznw/Documents/GitHub/jarvis_data_eng_YerinAn/spark/src/main/resources/employees.csv")
+var data = employeeData.lines().toList
+data = data.drop(1)
 
 /**
  * SQL questions2:
@@ -111,8 +103,13 @@ val s = Source.fromInputStream(stream).getLines().toList
  * Convert lines to a list of employees
  * e.g. employees: List[Employee] = List(Employee(1,amy,toronto), Employee(2,bob,calgary), Employee(3,chris,toronto), Employee(4,dann,montreal))
  */
-//write you solution here
+case class Employee(id: Int, name: String, city: String, age: String)
 
+var employees = data.map(x => {
+  val col = x.split(',')
+  Employee(col(0).toInt, col(1), col(2), col(3))
+})
+println(employees)
 
 /**
  * SQL questions3:
@@ -124,9 +121,10 @@ val s = Source.fromInputStream(stream).getLines().toList
  * result:
  * upperCity: List[Employee] = List(Employee(1,amy,TORONTO,20), Employee(2,bob,CALGARY,19), Employee(3,chris,TORONTO,20), Employee(4,dann,MONTREAL,21), Employee(5,eric,TORONTO,22))
  */
-//write you solution here
-
-
+def printUpper(employee: Employee): Employee ={
+  Employee(employee.id, employee.name, employee.city.toUpperCase, employee.age)
+}
+val upperCity = employees.mapConserve(e => printUpper(e))
 
 /**
  * SQL questions4:
@@ -139,7 +137,7 @@ val s = Source.fromInputStream(stream).getLines().toList
  * result:
  * res5: List[Employee] = List(Employee(1,amy,TORONTO,20), Employee(3,chris,TORONTO,20), Employee(5,eric,TORONTO,22))
  */
-//write you solution here
+upperCity.filter(e => e.city == "TORONTO")
 
 
 /**
@@ -154,8 +152,7 @@ val s = Source.fromInputStream(stream).getLines().toList
  * result:
  * cityNum: scala.collection.immutable.Map[String,Int] = Map(CALGARY -> 1, TORONTO -> 3, MONTREAL -> 1)
  */
-//write you solution here
-
+val cityNum = upperCity.groupBy(_.city).mapValues(_.size)
 
 /**
  * SQL questions6:
@@ -169,4 +166,4 @@ val s = Source.fromInputStream(stream).getLines().toList
  * result:
  * res6: scala.collection.immutable.Map[(String, Int),Int] = Map((MONTREAL,21) -> 1, (CALGARY,19) -> 1, (TORONTO,20) -> 2, (TORONTO,22) -> 1)
  */
-//write you solution here
+val cityAgeNum = upperCity.groupBy(e=> (e.city, e.age)).mapValues(_.size)
