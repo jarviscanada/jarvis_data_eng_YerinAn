@@ -59,7 +59,7 @@
       "name": "Hadoop"
     },
     {
-      "description": "In development",
+      "description": "Evaluated Spark's functionality and performance with Zeppelin on Hadoop and re-implemented the Data Analytics project using Azure Databricks, Spark Structured APIs and Scala; performed parallel data analytics on a cluster against retail transaction data to answer several business questions and identify important customer categories to help the client organization develop targeted marketing strategies.",
       "git_url": "/spark",
       "name": "Spark"
     },
