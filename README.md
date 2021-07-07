@@ -29,7 +29,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_YerinAn](h
 
 **Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/hadoop)]: Deployed three-nodes Hadoop cluster using Google Cloud Platform Dataproc and performed data processing/analytics using Hive and Zeppelin. Also, evaluated HDFS, MapReduce, and YARN; Using the distributed storage and processing capabilities of the Hadoop ecosystem to examine the 2016 World Development Indicators dataset, optimize it using Parquet and Partitioning for analyzing data.
 
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/spark)]: In development
+**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/spark)]: Evaluated Spark's functionality and performance with Zeppelin on Hadoop and re-implemented the Data Analytics project using Azure Databricks, Spark Structured APIs and Scala; performed parallel data analytics on a cluster against retail transaction data to answer several business questions and identify important customer categories to help the client organization develop targeted marketing strategies.
 
 **Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_YerinAn/tree/master/cloud_devops)]: In development
 
